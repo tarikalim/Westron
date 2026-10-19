@@ -21,6 +21,7 @@ The name is Tolkien's *Westron*, the Common Speech of Middle-earth: the language
 | Word processing: DOCX, DOC, ODT, RTF, HTML, TXT | each other | macOS `textutil` |
 | Markdown | HTML, PDF, and through HTML DOCX, DOC, ODT, RTF, TXT | `pulldown-cmark`, `textutil` |
 | HTML, RTF, TXT, DOCX, DOC, ODT | PDF (A4) | macOS text and print system |
+| PDF | DOCX, RTF, TXT, and through them ODT, DOC, HTML: the text with its fonts and styles, a page break per page | PDFKit, macOS text system |
 | Audio: WAV, AIFF, M4A, CAF, FLAC, AAC, MP3, … | WAV, AIFF, M4A (AAC), CAF, FLAC, AAC | macOS `afconvert` |
 | Video: MOV, MP4, M4V | each other, M4A | macOS `avconvert` |
 | Data and tables: JSON, JSON Lines, YAML, TOML, XML, CSV, TSV, XLSX, XLS, ODS | JSON, JSON Lines, YAML, TOML, XML, CSV, TSV, XLSX | `serde`, `calamine`, `rust_xlsxwriter` |
@@ -33,7 +34,7 @@ The name is Tolkien's *Westron*, the Common Speech of Middle-earth: the language
 
 ¹ Uses the program installed on your Mac (Homebrew or the app in /Applications); `westron engines` shows which ones it found.
 
-Word files reach PDF through macOS's text system; with LibreOffice installed, LibreOffice lays them out instead, closer to Word. HWP/HWPX, PDF to DOCX, CAD, 3D models, fonts and e-mail come in later versions.
+Word files reach PDF through macOS's text system; with LibreOffice installed, LibreOffice lays them out instead, closer to Word. PDF layout (pictures, columns, tables) in DOCX, HWP/HWPX, CAD, 3D models, fonts and e-mail come in later versions.
 
 ## Command line
 

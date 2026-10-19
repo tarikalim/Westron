@@ -48,7 +48,7 @@ Clippy and the tests run on macOS and are skipped while the pull request is a dr
 |---|---|
 | `src/formats.rs` | Every format Westron knows |
 | `src/route.rs` | The cheapest chain of engines from one format to another |
-| `src/engine/` | Engines: `image` (ImageIO, `image` crate), `pdf` (CoreGraphics), `archive` (bsdtar, ditto), `native` (textutil, afconvert, avconvert), `data` (JSON, YAML, TOML, XML, CSV, sheets), `text` (subtitles, Markdown), `print` (rich text to PDF), `tools` (FFmpeg, LibreOffice, Pandoc, calibre, Ghostscript) |
+| `src/engine/` | Engines: `image` (ImageIO, `image` crate), `pdf` (CoreGraphics), `archive` (bsdtar, ditto), `native` (textutil, afconvert, avconvert), `data` (JSON, YAML, TOML, XML, CSV, sheets), `text` (subtitles, Markdown), `print` (rich text to PDF, PDF text to DOCX), `tools` (FFmpeg, LibreOffice, Pandoc, calibre, Ghostscript) |
 | `src/jobs.rs` | One conversion: route, scratch folder, results next to the original |
 | `src/cli.rs` | The `westron` command |
 | `src/app.rs`, `src/donut.rs` | The window and the ring at the cursor |

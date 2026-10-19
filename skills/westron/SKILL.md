@@ -48,6 +48,8 @@ conversion can take up to three engines; Westron finds the chain.
 - Documents become A4 PDFs through macOS's text system; with LibreOffice installed, Word files go
   through LibreOffice instead, closer to Word's layout. Complex layouts (columns, floating images)
   may differ from the original.
+- PDF to DOCX, RTF or TXT carries the text with its fonts and styles and a page break per page;
+  pictures, columns and table layout are not carried over. A scanned PDF has no text (no OCR).
 - Large videos take time; the call returns when every file is done.
 
 More examples: [references/recipes.md](references/recipes.md).

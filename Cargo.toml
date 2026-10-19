@@ -42,6 +42,7 @@ objc2-core-foundation = "0.3"
 objc2-core-graphics = "0.3"
 objc2-image-io = "0.3"
 block2 = "0.6"
+objc2-pdf-kit = "0.3"
 
 [profile.dev]
 # Deps optimized so the UI stays responsive in debug builds.
