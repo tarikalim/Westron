@@ -1,0 +1,63 @@
+name: Release
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-apple-darwin,x86_64-apple-darwin
+      - uses: Swatinem/rust-cache@v2
+      - run: mkdir dist && echo "NAME=Westron-${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+
+      - name: macOS universal app
+        run: |
+          cargo build --locked --release --target aarch64-apple-darwin
+          cargo build --locked --release --target x86_64-apple-darwin
+          lipo -create -output target/westron target/{aarch64,x86_64}-apple-darwin/release/westron
+          scripts/bundle.sh target/westron dist
+          ditto -c -k --keepParent "dist/Westron.app" "dist/$NAME-macos-universal.zip"
+          hdiutil create -volname "Westron" -srcfolder "dist/Westron.app" -format UDZO "dist/$NAME-macos-universal.dmg"
+          rm -rf "dist/Westron.app"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: dist-${{ matrix.os }}
+          path: dist/*
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v8
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          prev=$(git describe --tags --abbrev=0 "$GITHUB_REF_NAME^" 2>/dev/null || true)
+          git log --pretty='- %s' ${prev:+$prev..}"$GITHUB_REF_NAME" > notes.md
+          gh release create "$GITHUB_REF_NAME" dist/* --title "Westron ${GITHUB_REF_NAME#v}" --notes-file notes.md

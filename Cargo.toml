@@ -1,0 +1,66 @@
+[workspace]
+members = ["."]
+exclude = ["vendor"]
+resolver = "3"
+
+[package]
+name = "westron"
+version = "0.1.0"
+edition = "2024"
+description = "Drag files, drop them on a format, get them converted. Native macOS file converter, a Rust port of Filee."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/tarikalim/Westron"
+readme = "README.md"
+keywords = ["converter", "files", "gpui", "macos", "desktop"]
+categories = ["multimedia", "gui"]
+publish = false
+
+[dependencies]
+# gpui-kit re-exports GPUI (gpui-pre 0.3.8 = zed@279fe07), gpui-base, gpui-component and Lucide icons.
+gpui-kit = "=0.7.1"
+anyhow = "1"
+dirs = "7"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+futures = "0.3"
+# Already in GPUI's tree: decoders/encoders for what ImageIO does not write (WebP, QOI, PNM).
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "qoi", "pnm", "tga", "bmp", "ico", "gif", "tiff"] }
+toml = "1.1.8"
+serde_yaml_ng = "0.10.0"
+csv = "1.4.0"
+calamine = "0.37.0"
+rust_xlsxwriter = "0.100.0"
+pulldown-cmark = { version = "0.13", default-features = false, features = ["html"] }
+roxmltree = "0.21.1"
+sha2 = "0.11"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6"
+objc2-foundation = "0.3"
+objc2-app-kit = "0.3"
+objc2-core-foundation = "0.3"
+objc2-core-graphics = "0.3"
+objc2-image-io = "0.3"
+block2 = "0.6"
+
+[profile.dev]
+# Deps optimized so the UI stays responsive in debug builds.
+package."*" = { opt-level = 2 }
+
+[dev-dependencies]
+gpui-kit = { version = "=0.7.1", features = ["test-support"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
+
+[patch.crates-io]
+# gpui-pre-macos 0.3.8 + idle stop of the display link (search "idle_frames" in window.rs).
+gpui-pre-macos = { path = "vendor/gpui-pre-macos" }
+# gpui-pre-apple 0.3.8 (Metal renderer) vendored for memory work.
+gpui-pre-apple = { path = "vendor/gpui-pre-apple" }
+# gpui-pre 0.3.8 + idle trim of per-frame buffers (search "trim_frame_memory" in window.rs).
+gpui-pre = { path = "vendor/gpui-pre" }
+# gpui-base 0.7.1 + cursor stops blinking after 10 blinks without input (search "MAX_BLINKS").
+gpui-base = { path = "vendor/gpui-base" }
