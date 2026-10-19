@@ -1,5 +1,5 @@
 // Engines that run a program installed on the Mac: FFmpeg, LibreOffice, Pandoc, calibre, Ghostscript.
-// Edges and costs follow Filee's (25 = fallback that built-in engines beat).
+// Cost 25 = fallback that built-in engines beat.
 
 use super::{Edge, Engine, Engines, Step, edge};
 use crate::formats::{Category, KNOWN};
@@ -83,7 +83,7 @@ macro_rules! located {
 
 // ---- FFmpeg ----
 
-/// Target → (muxer, video codec, audio codec), from Filee's MediaEncoding.
+/// Target → (muxer, video codec, audio codec).
 const VIDEO: &[(&str, &str, &str, &str)] = &[
     ("mp4", "mp4", "libx264", "aac"),
     ("m4v", "mp4", "libx264", "aac"),

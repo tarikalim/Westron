@@ -56,6 +56,9 @@ fn main() {
             "mcp" => mcp::run(),
             // Internal: one rich text → PDF conversion, on this process's main thread.
             "__pdf" if args.len() == 4 => engine::print::render(args[2].as_ref(), args[3].as_ref()),
+            "__pdftext" if args.len() == 4 => {
+                engine::print::extract(args[2].as_ref(), args[3].as_ref())
+            }
             _ => cli::run(cmd, &args[2..]),
         };
         if let Err(e) = r {

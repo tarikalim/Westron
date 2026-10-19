@@ -70,6 +70,7 @@ pub fn all() -> Engines {
         Arc::new(text::Subtitles::new()),
         Arc::new(text::Markdown::new()),
         Arc::new(print::RichPdf::new()),
+        Arc::new(print::PdfText::new()),
     ];
     v.extend(tools::all());
     v

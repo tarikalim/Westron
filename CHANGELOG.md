@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- PDF to DOCX, RTF and TXT (and through them ODT, DOC, HTML): the text with its fonts and styles, a page break per page.
+
 ## 0.1.0
 
 - First version: the ⌥-drag ring at the cursor, the drop window, the menu bar item and the `westron` command.

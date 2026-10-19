@@ -11,7 +11,7 @@ use objc2_core_graphics::{
 use objc2_image_io::CGImageDestination;
 use std::path::{Path, PathBuf};
 
-/// Render resolution for page images, as Filee's default preset.
+/// Render resolution for page images.
 const DPI: f64 = 150.0;
 
 pub struct PdfEngine {

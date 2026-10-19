@@ -1,7 +1,6 @@
 # Third-party notices
 
-Westron is a Rust port of Filee (https://github.com/KnifeLemon/Filee). Its format list, route
-search and engine edges are derived from Filee's source, used under the MIT licence below.
+Parts of Westron are derived from software under the MIT licence below.
 
 ```
 MIT License
