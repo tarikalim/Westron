@@ -2,8 +2,6 @@
 
 A native macOS file converter you use by dragging, written in Rust with [GPUI](https://www.gpui.rs/). Hold <kbd>⌥ Option</kbd>, drag files from Finder, and drop them on a format in the ring that opens at your cursor. The result is saved next to the original.
 
-Westron is a Rust port of [Filee](https://github.com/KnifeLemon/Filee) by Myeonggu Kim (KnifeLemon), MIT licensed. The format list, the route search and the engine edges follow Filee's; the app is rewritten for macOS with a low memory cost as the goal.
-
 The name is Tolkien's *Westron*, the Common Speech of Middle-earth: the language that let the free peoples understand each other.
 
 ## How it works
@@ -35,7 +33,7 @@ The name is Tolkien's *Westron*, the Common Speech of Middle-earth: the language
 
 ¹ Uses the program installed on your Mac (Homebrew or the app in /Applications); `westron engines` shows which ones it found.
 
-Word files reach PDF through macOS's text system; with LibreOffice installed, LibreOffice lays them out instead, closer to Word. Filee's other built-in engines (HWP/HWPX, PDF to DOCX, CAD, 3D models, fonts, e-mail) come in later versions.
+Word files reach PDF through macOS's text system; with LibreOffice installed, LibreOffice lays them out instead, closer to Word. HWP/HWPX, PDF to DOCX, CAD, 3D models, fonts and e-mail come in later versions.
 
 ## Command line
 
@@ -76,4 +74,4 @@ The build is signed only locally (ad hoc). Requires macOS 14 or newer.
 
 ## Licence
 
-MIT or Apache-2.0, at your option. Westron is derived from Filee (MIT); see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+MIT or Apache-2.0, at your option. Third-party licences: [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).

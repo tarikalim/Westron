@@ -1,4 +1,4 @@
-// The formats Westron knows, ported from Filee's FormatRegistry.
+// The formats Westron knows.
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Category {

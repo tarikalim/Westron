@@ -46,7 +46,7 @@ Clippy and the tests run on macOS and are skipped while the pull request is a dr
 
 | Path | What |
 |---|---|
-| `src/formats.rs` | Every format Westron knows (Filee's list) |
+| `src/formats.rs` | Every format Westron knows |
 | `src/route.rs` | The cheapest chain of engines from one format to another |
 | `src/engine/` | Engines: `image` (ImageIO, `image` crate), `pdf` (CoreGraphics), `archive` (bsdtar, ditto), `native` (textutil, afconvert, avconvert), `data` (JSON, YAML, TOML, XML, CSV, sheets), `text` (subtitles, Markdown), `print` (rich text to PDF), `tools` (FFmpeg, LibreOffice, Pandoc, calibre, Ghostscript) |
 | `src/jobs.rs` | One conversion: route, scratch folder, results next to the original |
